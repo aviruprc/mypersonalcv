@@ -13,3 +13,5 @@ The main aim will be to create a personal website on the cloud with the followin
 6. Implementing the same using EC2 instance and opening a port e.t.c
 7. Implement a CI/CD pipeline for future updates
 8. Maintainance 
+
+making a change on VS
