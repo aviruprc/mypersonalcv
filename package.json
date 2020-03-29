@@ -1,0 +1,24 @@
+{
+  "name": "mypersonalcv-local",
+  "version": "1.0.0",
+  "description": "Project for trying out a few functionalities in the quarantine period. The main aim will be to create a personal website on the cloud with the following steps involved.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aviruprc/mypersonalcv.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aviruprc/mypersonalcv/issues"
+  },
+  "homepage": "https://github.com/aviruprc/mypersonalcv#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
