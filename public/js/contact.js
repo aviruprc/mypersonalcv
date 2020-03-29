@@ -9,7 +9,7 @@ form.addEventListener('submit', e => {
   const Rating = document.getElementById('email').value;
   const Cast = document.getElementById('message').value;
 
-  fetch('https://i9tsozqn90.execute-api.ap-south-1.amazonaws.com/add_movie/AddMovie01', {
+  fetch('https://dnwtkf3wzi.execute-api.ap-south-1.amazonaws.com/default', {
     headers: { 'Content-Type': 'application/json; charset=utf-8' },
     method: 'POST',
     body: JSON.stringify({
