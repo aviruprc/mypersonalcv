@@ -4,19 +4,19 @@ form.addEventListener('submit', e => {
 
   e.preventDefault();
 
-  const Title = document.getElementById('name').value;
-  const Description = document.getElementById('subject').value;
-  const Rating = document.getElementById('email').value;
-  const Cast = document.getElementById('message').value;
+  const name = document.getElementById('name').value;
+  const subject = document.getElementById('subject').value;
+  const email = document.getElementById('email').value;
+  const message = document.getElementById('message').value;
 
-  fetch(' https://dnwtkf3wzi.execute-api.ap-south-1.amazonaws.com/default', {
+  fetch(' https://jo6dhyi82i.execute-api.ap-south-1.amazonaws.com/first/', {
     headers: { 'Content-Type': 'application/json; charset=utf-8' },
     method: 'POST',
     body: JSON.stringify({
         name: name,
         subject:subject,
-        content: email,
-        email: message
+        email: email,
+        message: message
     })
 
   }).then(() => {
