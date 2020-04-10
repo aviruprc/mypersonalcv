@@ -7175,6 +7175,15 @@ Created using IcoMoon - icomoon.io
   text-transform: uppercase;
 }
 
+/* Certification Style */
+.cc-certification .cc-certification-header {
+  padding-top: 60px;
+  padding-right: 0;
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+}
+
 /* Education Style */
 .cc-education .h5 {
   margin-bottom: 0;
