@@ -1,17 +1,17 @@
 ---
-    apiVersion: "v1"
-    kind: "Service"
-    metadata:
-      name: "cv-load-balancer"
-      namespace: "mycv"
-      labels:
-        app: "mycv"
-    spec:
-      ports:
-      - protocol: "TCP"
-        port: 80
-      selector:
-        app: "mycv"
-      type: "LoadBalancer"
-      loadBalancerIP: ""
-    
+  apiVersion: "v1"
+  kind: "Service"
+  metadata:
+    name: "cv-load-balancer"
+    namespace: "mycv"
+    labels:
+      app: "mycv"
+  spec:
+    ports:
+    - protocol: "TCP"
+      port: 80
+      targetPort: 8080
+    selector:
+      app: "mycv"
+    type: "LoadBalancer"
+    loadBalancerIP: ""
