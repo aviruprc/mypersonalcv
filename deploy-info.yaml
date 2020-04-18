@@ -1,0 +1,46 @@
+---
+apiVersion: "v1"
+kind: "Namespace"
+metadata:
+  name: "mycv"
+---
+apiVersion: "apps/v1"
+kind: "Deployment"
+metadata:
+  name: "mycv"
+  namespace: "mycv"
+  labels:
+    app: "mycv"
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: "mycv"
+  template:
+    metadata:
+      labels:
+        app: "mycv"
+    spec:
+      containers:
+      - name: "mypersonalcv-1"
+        image: "aviruprc/mypersonalcv:v2.3"
+---
+apiVersion: "autoscaling/v2beta1"
+kind: "HorizontalPodAutoscaler"
+metadata:
+  name: "mycv-hpa-upqa"
+  namespace: "mycv"
+  labels:
+    app: "mycv"
+spec:
+  scaleTargetRef:
+    kind: "Deployment"
+    name: "mycv"
+    apiVersion: "apps/v1"
+  minReplicas: 1
+  maxReplicas: 5
+  metrics:
+  - type: "Resource"
+    resource:
+      name: "cpu"
+      targetAverageUtilization: 80
