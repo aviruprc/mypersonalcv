@@ -1,7 +1,7 @@
 pipeline {
   environment {
     registry = "aviruprc/mypersonalcv"
-    registryCredential = 'dockerhub'
+    registryCredential = 'DockerHub'
   }
   agent any
   stages {
