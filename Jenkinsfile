@@ -1,11 +1,16 @@
 pipeline {
-    agent any 
-    stages {
-        stage('Build') {
-            steps {
-                sh 'docker build -t aviruprc/mypersonalcv:latest'
-                sh 'docker push aviruprc/mypersonalcv:latest'
-            }
+  environment {
+    registry = "aviruprc/mypersonalcv"
+    registryCredential = 'dockerhub'
+  }
+  agent any
+  stages {
+    stage('Building image') {
+      steps{
+        script {
+          docker.build registry + ":$BUILD_NUMBER"
         }
+      }
     }
+  }
 }
