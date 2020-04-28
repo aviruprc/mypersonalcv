@@ -6,6 +6,7 @@ pipeline {
                 sh 'node --version'
                 sh 'svn --version'
             }
+        }
         stage('Build') {
             steps {
                 sh 'docker build -t aviruprc/mypersonalcv:latest'
