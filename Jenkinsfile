@@ -24,7 +24,7 @@ pipeline {
     }
     stage('Remove Unused docker image') {
       steps{
-        sh "docker rmi -f $registry:latest"
+        sh "docker system prune --all"
       }
     }
   }
