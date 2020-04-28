@@ -22,7 +22,7 @@ pipeline {
         }
       }
     }
-    stage('Deploy Image') {
+    stage('Remove Unused Image') {
       steps{
         script {
           sh "docker rmi -f aviruprc/mypersonalcv:latest"
