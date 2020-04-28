@@ -22,9 +22,12 @@ pipeline {
         }
       }
     }
-    stage('Remove Unused docker image') {
+    stage('Deploy Image') {
       steps{
-        sh "docker system prune --all"
+        script {
+          sh "docker rmi -f aviruprc/mypersonalcv:latest"
+          }
+        }
       }
     }
   }
