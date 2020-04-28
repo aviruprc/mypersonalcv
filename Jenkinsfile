@@ -25,7 +25,7 @@ pipeline {
     stage('Remove Unused Image') {
       steps{
         script {
-          sh "docker rmi -f aviruprc/mypersonalcv:latest"
+          sh "docker system prune --all"
           }
         }
       }
