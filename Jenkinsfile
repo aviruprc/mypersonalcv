@@ -13,10 +13,6 @@ pipeline {
         }
       }
     }
-    stage('Test') {
-      steps {
-        sh 'npm test'
-      }
     } 
     stage('Deploy Image') {
       steps{
@@ -27,5 +23,5 @@ pipeline {
         }
       }
     }
-    }
   }
+} 
