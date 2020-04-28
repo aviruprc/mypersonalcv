@@ -13,6 +13,11 @@ pipeline {
         }
       }
     }
+    stage('Test') {
+      steps {
+        sh 'npm test'
+      }
+    } 
     stage('Deploy Image') {
       steps{
         script {
@@ -22,12 +27,5 @@ pipeline {
         }
       }
     }
-    stage('Remove Unused Image') {
-      steps{
-        script {
-          sh "docker system prune --all"
-          }
-        }
-      }
     }
   }
