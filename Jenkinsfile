@@ -10,9 +10,7 @@ pipeline {
     stage('Test') {
 		steps{	
       echo "Test"
-      script {
-        sh "docker"
-      }
+      sh 'docker'
       }
 	  }
     
@@ -31,6 +29,7 @@ pipeline {
             dockerImage.push()
           }
         }
+      sh 'docker pune --all'
       }
     }
   }
