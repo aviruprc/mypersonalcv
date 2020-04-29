@@ -22,12 +22,5 @@ pipeline {
         }
       }
     }
-    stage('Clean Unused Image') {
-      steps{
-        script {
-          sh "docker rmi -f aviruprc/mypersonalcv:latest"
-          }
-        }
-      }
-    }
   }
+}
