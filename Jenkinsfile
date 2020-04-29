@@ -29,7 +29,6 @@ pipeline {
             dockerImage.push()
           }
         }
-      sh 'docker pune --all'
       }
     }
   }
