@@ -31,15 +31,24 @@ pipeline {
         }
       }
     }
+
+    stage('Clean Workspace') {
+      steps{
+        script {
+          sh 'docker rmi aviruprc/mypersonalcv:latest'
+          }
+        }
+      }
+    }
   }
   
   post
 	{
 		success{
-			echo "Buils was successful"
+			echo "Build was successful"
 		}
 		always{
-			echo "One way or Other I have finished"
+			echo "One way or other, I have finished"
 		}
 	}
 }
