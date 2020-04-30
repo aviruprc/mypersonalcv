@@ -53,7 +53,7 @@ pipeline {
     stage('Athenticate with gcloud') {
       steps{
         script {
-          withEnv(['GCLOUD_PATH=/var/jenkins_home/google-cloud-sdk/bin']) {
+          withEnv(['GCLOUD_PATH=/usr/bin/gcloud']) {
                 sh '$GCLOUD_PATH/gcloud --version'
           }
         }
