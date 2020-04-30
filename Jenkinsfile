@@ -12,7 +12,6 @@ pipeline {
       echo "Test"
       sh 'docker ps'
       sh 'rm -r ./mycv'
-      sh 'sudo su -'
       }
 	  }
     
