@@ -10,7 +10,7 @@ pipeline {
     stage('Test') {
 		steps{	
       echo "Test"
-      sh 'docker'
+      sh 'docker ps'
       sh 'rm -r ./mycv'
       }
 	  }
@@ -53,7 +53,7 @@ pipeline {
     stage('Athenticate with gcloud') {
       steps{
         script {
-              sh '/usr/bin/gcloud --version'
+              sh 'kubectl'
         }
       }
     }
