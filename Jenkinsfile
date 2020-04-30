@@ -53,7 +53,7 @@ pipeline {
     stage('Athenticate with gcloud') {
       steps{
         script {
-              sh 'gcloud --version'
+              sh '/usr/bin/gcloud --version'
         }
       }
     }
