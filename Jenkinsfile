@@ -11,6 +11,7 @@ pipeline {
 		steps{	
       echo "Test"
       sh 'docker'
+      sh 'rm -r ./mycv'
       }
 	  }
     
@@ -45,6 +46,15 @@ pipeline {
         script {
           sh 'git clone http://github.com/aviruprc/mypersonalcv ./mycv'
           sh 'cd mycv/'
+          }
+        }
+      }
+
+    stage('Athenticate with gcloud') {
+      steps{
+        script {
+          sh 'gcloud init'
+          sh 'gcloud auth login'
           }
         }
       }
