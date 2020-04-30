@@ -53,9 +53,7 @@ pipeline {
     stage('Athenticate with gcloud') {
       steps{
         script {
-          withEnv(['GCLOUD_PATH=/usr/bin']) {
-                sh '$GCLOUD_PATH/gcloud --version'
-          }
+              sh 'gcloud --version'
         }
       }
     }
