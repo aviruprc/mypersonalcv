@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: "mypersonalcv-1"
-        image: "aviruprc/mypersonalcv:v2.3"
+        image: "aviruprc/mypersonalcv:latest"
 ---
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
