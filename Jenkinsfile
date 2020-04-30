@@ -40,22 +40,29 @@ pipeline {
         }
       }
 
-    stage('Clone Repo') {
-      steps{
-        script {
-          sh 'git clone http://github.com/aviruprc/mypersonalcv ./mycv'
-          sh 'cd mycv/'
-          }
-        }
-      }
+    
 
-    stage('Athenticate with gcloud') {
+    stage('SSH into Workspace') {
       steps{
         script {
-              sh 'gcloud --version'
+              sh' git clone http://github.com/aviruprc/mypersonalcv'
+              sh 'cd mypersonalcv'
+              sh 'ssh -i pvt2 avirup@35.223.154.52'
+              sh 'kubectl'
         }
       }
     }
+
+    stage('Clone Repo') {
+      steps{
+        script {
+          sh 'gcloud container clusters get-credentials cluster-1 --zone us-central1-c --project avi-test-275806'
+          sh 'git clone http://github.com/aviruprc/mypersonalcv ./mycv'
+          sh 'cd mycv/'
+          sh 'helm install ./mycv --generate-name'
+          }
+        }
+      }
   }
   post
 	{
