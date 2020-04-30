@@ -39,6 +39,15 @@ pipeline {
           }
         }
       }
+
+    stage('Clone Repo') {
+      steps{
+        script {
+          sh 'git clone http://github.com/aviruprc/mypersonalcv ./mycv'
+          sh 'cd mycv/'
+          }
+        }
+      }
     }
   
   post
