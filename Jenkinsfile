@@ -54,7 +54,7 @@ pipeline {
     stage('Athenticate with gcloud') {
       steps{
         script {
-              sh 'kubectl'
+              sh 'gcloud --version'
         }
       }
     }
