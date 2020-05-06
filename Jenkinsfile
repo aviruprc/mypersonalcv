@@ -45,8 +45,8 @@ pipeline {
     stage('SSH into Workspace') {
       steps{
         script {
-              ps' git clone http://github.com/aviruprc/mypersonalcv'
-              ps 'cd mypersonalcv'
+              sh' git clone http://github.com/aviruprc/mypersonalcv'
+              sh 'cd mypersonalcv'
         }
       }
     }
