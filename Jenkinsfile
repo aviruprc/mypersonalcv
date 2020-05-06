@@ -10,7 +10,7 @@ pipeline {
     stage('Test') {
 		steps{
       echo "Test"
-      cmd 'docker ps'
+      bash 'docker ps'
       }
 	  }
 
