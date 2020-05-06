@@ -6,22 +6,22 @@ pipeline {
   }
   agent any
   stages {
-    
+
     stage('Test') {
-		steps{	
+		steps{
       echo "Test"
       sh 'docker ps'
       }
 	  }
-    
+
     stage('Building image') {
       steps{
         script {
           dockerImage = docker.build registry + ":latest"
         }
       }
-    } 
-   
+    }
+
     stage('Deploy Image') {
       steps{
         script {
@@ -40,7 +40,7 @@ pipeline {
         }
       }
 
-    
+
 
     stage('SSH into Workspace') {
       steps{
@@ -74,5 +74,3 @@ pipeline {
 		}
 	}
 }
-
-
