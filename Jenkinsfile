@@ -10,7 +10,7 @@ pipeline {
     stage('Test') {
 		steps{
       echo "Test"
-      sh 'docker ps'
+      ps 'docker ps'
       }
 	  }
 
@@ -45,10 +45,8 @@ pipeline {
     stage('SSH into Workspace') {
       steps{
         script {
-              sh' git clone http://github.com/aviruprc/mypersonalcv'
-              sh 'cd mypersonalcv'
-              sh 'ssh -i pvt2 avirup@35.223.154.52'
-              sh 'kubectl'
+              ps' git clone http://github.com/aviruprc/mypersonalcv'
+              ps 'cd mypersonalcv'
         }
       }
     }
