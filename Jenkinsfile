@@ -12,8 +12,7 @@ pipeline {
         script {
           sh 'git clone http://github.com/aviruprc/mypersonalcv'
           sh 'cd mypersonalcv'
-          sh 'docker run gcr.io/google.com/cloudsdktool/cloud-sdk:266.0.0 gcloud version'
-          sh 'docker run -ti --name gcloud-config gcr.io/google.com/cloudsdktool/cloud-sdk gcloud auth activate-service-account --key-file avi-new-327a79e02adb.json'
+          sh 'docker run gcr.io/google.com/cloudsdktool/cloud-sdk:266.0.0 gcloud auth activate-service-account --key-file avi-new-327a79e02adb.json'
           }
         }
       }
