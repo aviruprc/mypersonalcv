@@ -15,7 +15,6 @@ pipeline {
         sh 'pwd'
         sh 'docker run gcr.io/google.com/cloudsdktool/cloud-sdk:latest gcloud version'
         sh 'docker run gcr.io/google.com/cloudsdktool/cloud-sdk:266.0.0 gcloud auth activate-service-account --key-file avi-new-327a79e02adb.json'
-        sh 'cat avi-new-327a79e02adb.json'
         }
       }
     }
