@@ -13,9 +13,9 @@ pipeline {
     stage('Gcloud') {
       steps{
         script {
-          sh 'pwd'
           sh 'docker run gcr.io/google.com/cloudsdktool/cloud-sdk:latest gcloud version'
-          sh 'docker run -ti --name gcloud-config gcr.io/google.com/cloudsdktool/cloud-sdk gcloud auth login'
+          sh 'pwd'
+          sh 'docker run -ti --name gcloud-config gcr.io/google.com/cloudsdktool/cloud-sdk gcloud auth activate-service-account --key-file avi-new-327a79e02adb.json'
           }
         }
       }
