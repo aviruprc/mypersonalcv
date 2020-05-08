@@ -40,6 +40,14 @@ pipeline {
           }
         }
       }
+    
+    stage('Installing Gcloud') {
+      steps{
+        script {
+          sh 'docker run gcr.io/google.com/cloudsdktool/cloud-sdk:latest gcloud version'
+          }
+        }
+      }
 
 
 
