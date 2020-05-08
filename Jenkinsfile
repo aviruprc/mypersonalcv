@@ -12,9 +12,9 @@ pipeline {
   stages {
     stage('Installing Gcloud') {
       steps{
-        sh 'git clone http://github.com/aviruprc/mypersonalcv ./x'
+        sh 'git clone https://github.com/aviruprc/mypersonalcv.git ./y'
         script {
-          step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: './x/deploy-info.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
+          step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: './y/deploy-info.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
           }
         }
       }
