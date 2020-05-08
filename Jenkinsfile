@@ -3,6 +3,10 @@ pipeline {
     registry = "aviruprc/mypersonalcv"
     registryCredential = 'DockerHub'
     dockerImage = ''
+    PROJECT_ID = 'avi-new'
+    CLUSTER_NAME = 'cluster-1'
+    LOCATION = 'us-central1-c'
+    CREDENTIALS_ID = 'avi-test'
   }
   agent any
   stages {
@@ -10,10 +14,7 @@ pipeline {
     stage('Installing Gcloud') {
       steps{
         script {
-          sh 'rm -r mypersonalcv'
-          sh 'git clone http://github.com/aviruprc/mypersonalcv'
-          sh 'cd mypersonalcv'
-          sh 'docker run gcr.io/google.com/cloudsdktool/cloud-sdk:266.0.0 gcloud auth activate-service-account --key-file avi-new-327a79e02adb.json'
+          step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'deploy-info.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
           }
         }
       }
