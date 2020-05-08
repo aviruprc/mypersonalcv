@@ -15,7 +15,7 @@ pipeline {
         sh 'rm -r y'
         sh 'git clone https://github.com/aviruprc/mypersonalcv.git ./y'
         script {
-          step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: './y/deploy-info.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
+          step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'y/deploy-info.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
           }
         }
       }
