@@ -46,6 +46,7 @@ pipeline {
 		}
 		always{
 			echo "One way or other, I have finished"
+      sh 'docker rmi gcr.io/google.com/cloudsdktool/cloud-sdk:266.0.0'
 		}
 	}
 }
