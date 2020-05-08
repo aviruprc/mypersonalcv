@@ -17,6 +17,9 @@ pipeline {
 
     stage('Building image') {
       steps{
+	  withEnv(['GCLOUD_PATH=/var/jenkins_home/google-cloud-sdk/bin']) {
+                sh '$GCLOUD_PATH/gcloud --version'
+            }
         script {
           dockerImage = docker.build registry + ":latest"
         }
