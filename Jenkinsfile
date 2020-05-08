@@ -11,7 +11,7 @@ pipeline {
 		steps{
       echo "Test"
       sh 'docker ps'
-      
+      sh 'if [ -d "mypersonalcv" ]; then rm -Rf mypersonalcv; fi'
       }
 	  }
 
