@@ -12,11 +12,10 @@ pipeline {
   stages {
      stage('Installing Gcloud') {
       steps{
-	sh 'curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl'
-	sh 'chmod +x ./kubectl'
-	sh 'export PATH=$PWD:$PATH'
-	sh 'kubectl version --client'
-        step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION,manifestPattern: '/var/jenkins_home/workspace/cv-pipeline/deploy-info.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
+        sh 'pwd'
+        sh 'docker run gcr.io/google.com/cloudsdktool/cloud-sdk:latest gcloud version'
+        sh 'docker run gcr.io/google.com/cloudsdktool/cloud-sdk:266.0.0 gcloud version'
+        sh 'cat avi-new-327a79e02adb.json'
         }
       }
     }
