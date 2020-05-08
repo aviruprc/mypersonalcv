@@ -14,9 +14,11 @@ pipeline {
       steps{
         sh 'rm -r y'
         sh 'git clone https://github.com/aviruprc/mypersonalcv.git ./y'
-	sh 'cd var/jenkins_home/workspace/cv-pipeline/y'
+	sh 'pwd'
+	sh 'ls'
 	sh 'chmod 777  deploy-info.yaml'      
         script {
+		
           step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'deploy-info.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
           }
         }
