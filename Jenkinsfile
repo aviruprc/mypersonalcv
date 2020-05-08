@@ -6,12 +6,13 @@ pipeline {
   }
   agent any
   stages {
-    
+
     stage('Installing Gcloud') {
       steps{
         script {
           sh 'docker run gcr.io/google.com/cloudsdktool/cloud-sdk:266.0.0 gcloud version'
           sh 'docker run -ti --name gcloud-config gcr.io/google.com/cloudsdktool/cloud-sdk gcloud auth login'
+          sh '4/zgE9Praw3TOiP8uCbmKZmI5N02QzIZuqSnHBZWhpox2YrgzyTSUAHsk'  
           }
         }
       }
