@@ -12,7 +12,7 @@ pipeline {
   stages {
      stage('Installing Gcloud') {
       steps{
-	sh 'cat /var/jenkins_home/workspace/cv-pipeline/deploy-info.yaml'
+	sh 'kubectl'
         step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION,manifestPattern: '/var/jenkins_home/workspace/cv-pipeline/deploy-info.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
         }
       }
