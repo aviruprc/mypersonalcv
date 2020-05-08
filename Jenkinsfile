@@ -10,13 +10,51 @@ pipeline {
   }
   agent any
   stages {
-    stage('Installing Gcloud') {
+        stage('Test') {
+		steps{
+      echo "Test"
+      sh 'docker ps'
+      sh 'if [ -d "mypersonalcv" ]; then rm -Rf mypersonalcv; fi'
+      }
+	  }
+
+    stage('Building image') {
+	    steps{
+        script {
+          dockerImage = docker.build registry + ":latest"
+        }
+      }
+    }
+
+    stage('Deploy Image') {
       steps{
-        script {	
-          step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'deploy-info.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
+        script {
+          docker.withRegistry( '', registryCredential ) {
+            dockerImage.push()
           }
         }
       }
+    }
+
+    stage('Clean Workspace') {
+      steps{
+        script {
+          sh 'docker rmi aviruprc/mypersonalcv:latest'
+          }
+        }
+      }
+    
+    stage('Gcloud) {
+      steps{
+        script {
+          sh 'pwd'
+          sh 'docker run gcr.io/google.com/cloudsdktool/cloud-sdk:latest gcloud version'
+          sh 'docker run -ti --name gcloud-config gcr.io/google.com/cloudsdktool/cloud-sdk gcloud auth login'
+          }
+        }
+      }
+
+     
   }
   post
 	{
