@@ -10,12 +10,11 @@ pipeline {
   }
   agent any
   stages {
-    stage('Gcloud') {
+     stage('Installing Gcloud') {
       steps{
-        script {
-          sh 'docker run gcr.io/google.com/cloudsdktool/cloud-sdk:latest gcloud version'
-          sh 'pwd'
-          sh 'docker run -ti --name gcloud-config gcr.io/google.com/cloudsdktool/cloud-sdk gcloud auth activate-service-account --key-file avi-new-327a79e02adb.json'
+	sh 'cat /var/jenkins_home/workspace/cv-pipeline/deploy-info.yaml'
+        script {	
+          step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION,manifestPattern: '/var/jenkins_home/workspace/cv-pipeline/deploy-info.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
           }
         }
       }
