@@ -11,12 +11,12 @@ pipeline {
 		steps{
       echo "Test"
       sh 'docker ps'
-      sh 'rm -r mypersonalcv'
+      sh 'if [ -d "mypersonalcv" ]; then rm -Rf mypersonalcv; fi'
       }
 	  }
 
     stage('Building image') {
-      steps{
+	    steps{
         script {
           dockerImage = docker.build registry + ":latest"
         }
