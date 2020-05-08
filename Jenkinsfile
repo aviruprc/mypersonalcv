@@ -16,7 +16,9 @@ pipeline {
         sh 'git clone https://github.com/aviruprc/mypersonalcv.git ./y'
 	sh 'pwd'
 	sh 'ls'
-	sh 'chmod 777  deploy-info.yaml'      
+	sh 'cd y'
+	sh 'chmod 777  deploy-info.yaml'  
+	sh 'ls -l'
         script {
 		
           step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'deploy-info.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
