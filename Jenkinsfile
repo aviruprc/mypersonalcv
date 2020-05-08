@@ -10,16 +10,45 @@ pipeline {
   }
   agent any
   stages {
-     stage("Checkout code") {
-            steps {
-                checkout scm
-            }
+
+        stage('Test') {
+		steps{
+      echo "Test"
+      sh 'docker ps'
+      sh 'if [ -d "mypersonalcv" ]; then rm -Rf mypersonalcv; fi'
+      }
+	  }
+
+    stage('Building image') {
+	    steps{
+        script {
+          dockerImage = docker.build registry + ":latest"
         }
+      }
+    }
+
+    stage('Deploy Image') {
+      steps{
+        script {
+          docker.withRegistry( '', registryCredential ) {
+            dockerImage.push()
+          }
+        }
+      }
+    }
+
+    stage('Clean Workspace') {
+      steps{
+        script {
+          sh 'docker rmi aviruprc/mypersonalcv:latest'
+          }
+        }
+      }
+
      stage('Installing Gcloud') {
       steps{
         sh 'pwd'
         sh 'docker run gcr.io/google.com/cloudsdktool/cloud-sdk:latest gcloud version'
-        sh 'docker run gcr.io/google.com/cloudsdktool/cloud-sdk:latest gcloud auth activate-service-account --key-file workspace/cv-pipeline/avi-new-327a79e02adb.json'
         }
       }
     }
