@@ -10,9 +10,10 @@ pipeline {
     stage('Installing Gcloud') {
       steps{
         script {
+          sh 'git clone http://github.com/aviruprc/mypersonalcv'
+          sh 'cd mypersonalcv'
           sh 'docker run gcr.io/google.com/cloudsdktool/cloud-sdk:266.0.0 gcloud version'
-          sh 'docker run -ti --name gcloud-config gcr.io/google.com/cloudsdktool/cloud-sdk gcloud auth login'
-          sh '4/zgE9Praw3TOiP8uCbmKZmI5N02QzIZuqSnHBZWhpox2YrgzyTSUAHsk'  
+          sh 'docker run -ti --name gcloud-config gcr.io/google.com/cloudsdktool/cloud-sdk gcloud auth activate-service-account --key-file avi-new-327a79e02adb.json'
           }
         }
       }
@@ -46,7 +47,7 @@ pipeline {
 		}
 		always{
 			echo "One way or other, I have finished"
-      sh 'docker rmi gcr.io/google.com/cloudsdktool/cloud-sdk:266.0.0'
+      sh 'docker rmi -f gcr.io/google.com/cloudsdktool/cloud-sdk:266.0.0'
 		}
 	}
 }
