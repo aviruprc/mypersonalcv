@@ -44,7 +44,7 @@ pipeline {
         }
       }
     
-    stage('Gcloud) {
+    stage('Gcloud') {
       steps{
         script {
           sh 'pwd'
