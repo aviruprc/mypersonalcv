@@ -51,7 +51,6 @@ pipeline {
         sh 'gcloud --version'
         sh 'gcloud auth activate-service-account --key-file=avi-returns-37eff36e98ca.json'
         sh 'gcloud container clusters get-credentials cluster-1 --zone us-central1-c --project avi-returns'
-        sh 'kubectl delete -f deploy-info.yaml'
         sh 'kubectl apply -f deploy-info.yaml'
         sh 'kubectl apply -f service-info.yaml'
         }
