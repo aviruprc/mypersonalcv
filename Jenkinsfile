@@ -8,7 +8,7 @@ pipeline {
     LOCATION = 'us-central1-c'
     CREDENTIALS_ID = 'avi-test'
   }
-  agent docker
+  agent java-docker-slave
   stages {
 
         stage('Test') {
