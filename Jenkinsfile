@@ -8,11 +8,8 @@ pipeline {
     LOCATION = 'us-central1-c'
     CREDENTIALS_ID = 'avi-test'
   }
-	agent {
-  label 'java-docker-slave'
-}
+	agent any
   stages {
-
         stage('Test') {
 		steps{
       echo "Test"
@@ -46,6 +43,17 @@ pipeline {
           }
         }
       }
+	stage('Installing Gcloud') {
+      steps{
+        sh 'pwd'
+        sh 'docker run gcr.io/google.com/cloudsdktool/cloud-sdk:latest gcloud version'
+        }
+		  agent {
+    label 'java-docker-slave'
+      }
+      
+	
+  }
 
      stage('Installing Gcloud') {
       steps{
