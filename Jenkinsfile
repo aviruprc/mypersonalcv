@@ -43,7 +43,7 @@ pipeline {
           }
         }
       }
-  	stage('Installing Gcloud') {
+  	stage('Kubernetes Deployment') {
       agent {
         label 'gcloud'
       }
