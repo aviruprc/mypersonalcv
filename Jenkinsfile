@@ -43,25 +43,15 @@ pipeline {
           }
         }
       }
-	stage('Installing Gcloud') {
+  	stage('Installing Gcloud') {
       steps{
-        sh 'pwd'
-        sh 'docker run gcr.io/google.com/cloudsdktool/cloud-sdk:latest gcloud version'
+        sh 'java --version'
         }
 		  agent {
     label 'java-docker-slave'
       }
-      
-	
-  }
-
-     stage('Installing Gcloud') {
-      steps{
-        sh 'pwd'
-        sh 'docker run gcr.io/google.com/cloudsdktool/cloud-sdk:latest gcloud version'
-        }
-      }
     }
+  }
   post
 	{
 		success{
