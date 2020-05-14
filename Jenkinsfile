@@ -49,10 +49,9 @@ pipeline {
       }
       steps{
         sh 'gcloud --version'
-        sh 'gcloud auth activate-service-account --key-file=#SERVICE ACCOUNT NOW'
-        sh 'FILL CLUTSTER CONNECT ISSUE'
-        sh 'kubectl apply -f deploy-info.yaml'
-        sh 'kubectl apply -f service-info.yaml'
+        sh 'gcloud auth activate-service-account --key-file=avi-returns-aa5d13550a37.json'
+        sh 'gcloud container clusters get-credentials avi-cluster --zone us-central1-c --project avi-returns'
+        sh 'helm install ./cv --generate-name'
         }
 		  }
   }
