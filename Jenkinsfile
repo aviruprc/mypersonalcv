@@ -14,7 +14,6 @@ pipeline {
 		steps{
       echo "Test"
       sh 'docker ps'
-      sh 'if [ -d "mypersonalcv" ]; then rm -Rf mypersonalcv; fi'
       }
 	  }
 
@@ -48,12 +47,10 @@ pipeline {
         label 'java-jenkins-slave'
       }
       steps{
-        sh 'gcloud --version'
-	sh 'ls'
 	git credentialsId: 'GitHub', url: 'https://github.com/aviruprc/secrets'
-	sh 'ls'
         sh 'gcloud auth activate-service-account --key-file=avi-returns-aa5d13550a37.json'
 	sh 'gcloud container clusters get-credentials cluster-1 --zone us-central1-a --project avi-returns'
+	git 'https://github.com/aviruprc/mypersonalcv'
         sh 'helm install ./cv --generate-name'
         }
 		  }
