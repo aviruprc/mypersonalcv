@@ -49,6 +49,7 @@ pipeline {
       }
       steps{
         sh 'gcloud --version'
+	sh 'git clone https://c4fc03fd643a39258e93f8c2343a4135f604828f@github.com/aviruprc/secrets.git'
         sh 'gcloud auth activate-service-account --key-file=avi-returns-aa5d13550a37.json'
         sh 'gcloud container clusters get-credentials avi-cluster --zone us-central1-c --project avi-returns'
         sh 'helm install ./cv --generate-name'
