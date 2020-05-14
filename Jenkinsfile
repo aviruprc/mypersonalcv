@@ -45,7 +45,7 @@ pipeline {
       }
   	stage('Kubernetes Deployment') {
       agent {
-        label 'gcloud'
+        label 'java-jenkins-slave'
       }
       steps{
         sh 'gcloud --version'
